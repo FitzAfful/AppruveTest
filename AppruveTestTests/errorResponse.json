@@ -1,0 +1,11 @@
+{
+    "code": 3,
+    "message": "Validation Failed",
+    "details": [
+        {
+            "resource": "Verification",
+            "field": "document",
+            "code": "is required"
+        }
+    ]
+}
