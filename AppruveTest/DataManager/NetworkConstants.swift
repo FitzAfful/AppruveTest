@@ -13,6 +13,8 @@ struct NetworkConstants {
 
     static let imageUploadURL = "https://stage.appruve.co/v1/verifications/test/file_upload"
     static let networkErrorMessage = "Please check your internet connection and try again."
+    static let userIdKey = "user_id"
+    static let documentKey = "document"
 
     func getErrorMessage<T> (response: DataResponse<T, AFError>) -> String where T: Codable {
         var message = NetworkConstants.networkErrorMessage

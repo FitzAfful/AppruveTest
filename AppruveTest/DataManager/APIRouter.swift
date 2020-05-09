@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-enum Router: APIConfiguration, URLConvertible {
+enum APIRouter: APIConfiguration, URLConvertible {
 
     case imageUpload (userId: String)
 
@@ -29,8 +29,8 @@ enum Router: APIConfiguration, URLConvertible {
 
     internal var parameters: [String: Any] {
         switch self {
-        default:
-            return [:]
+        case .imageUpload(let param):
+            return [NetworkConstants.userIdKey: param]
         }
     }
 
