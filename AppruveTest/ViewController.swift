@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FTIndicator
 
 class ViewController: UIViewController {
 
@@ -24,14 +25,17 @@ class ViewController: UIViewController {
     }
 
     func uploadImage(data: Data) {
-        manager.uploadImage(data, userId: "2000") { (result) in
-            if let response = try? result.get() {
-                if response == "1" {
+        FTIndicator.showProgress(withMessage: "Uploading Image")
+        manager.uploadImage(data, userId: "\(arc4random_uniform(50))") { (result) in
+            FTIndicator.dismissProgress()
+            let code = result.response?.statusCode
+            if let statusCode = code {
+                if statusCode < 300 {
                     self.showAlert(withTitle: "Successful", message: "Image Upload Successful")
+                    return
                 }
-            }else {
-                self.showAlert(withTitle: "Error", message: NetworkConstants().getErrorMessage(response: result))
             }
+            self.showAlert(withTitle: "Error", message: NetworkConstants().getErrorMessage(response: result))
         }
     }
 }

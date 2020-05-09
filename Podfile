@@ -8,6 +8,7 @@ target 'AppruveTest' do
     pod 'Alamofire'
     pod 'SwiftLint'
     pod 'Mocker'
+    pod 'FTIndicator'
 		
     target 'AppruveTestTests' do
         inherit! :search_paths

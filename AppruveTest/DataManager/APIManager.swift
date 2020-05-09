@@ -9,10 +9,8 @@
 import Foundation
 import Alamofire
 
-typealias ImageUploadCompletionHandler = (_ videoResponse: Result<String, AFError>) -> Void
-
 protocol DataManagerProtocol {
-    func uploadImage(_ data: Data, userId: String, completionHandler: @escaping ImageUploadCompletionHandler) throws
+    func uploadImage(_ data: Data, userId: String, completionHandler: @escaping (DataResponse<APIResponse, AFError>) -> Void)
 }
 
 public class APIManager: NSObject, DataManagerProtocol {
@@ -24,13 +22,11 @@ public class APIManager: NSObject, DataManagerProtocol {
         self.manager = manager
     }
 
-    func uploadImage(_ data: Data, userId: String, completionHandler: @escaping ImageUploadCompletionHandler) {
+    func uploadImage(_ data: Data, userId: String, completionHandler: @escaping (DataResponse<APIResponse, AFError>) -> Void) {
         let router = APIRouter.imageUpload(userId: userId)
         manager.upload(multipartFormData: {  (multipartFormData) in
             multipartFormData.append(data, withName: NetworkConstants.documentKey, fileName: "swift_file \(arc4random_uniform(100)).jpg", mimeType: "image/jpeg")
             multipartFormData.append(userId.data(using: String.Encoding.utf8)!, withName: NetworkConstants.userIdKey)
-        }, to: router).responseDecodable {(response) in
-            completionHandler(response.result)
-        }
+        }, to: router).responseDecodable { (response: DataResponse<APIResponse, AFError>) in completionHandler(response) }
     }
 }

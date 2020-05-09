@@ -16,25 +16,12 @@ struct NetworkConstants {
     static let userIdKey = "user_id"
     static let documentKey = "document"
 
-    func getErrorMessage<T> (response: DataResponse<T, AFError>) -> String where T: Codable {
+    func getErrorMessage<T>(response: DataResponse<T, AFError>) -> String where T: Codable {
         var message = NetworkConstants.networkErrorMessage
         if let data = response.data {
-            if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                if let error = json["errors"] as? NSDictionary {
-                    if let myMessage = error["message"] as? String {
-                        message = myMessage
-                    }
-                } else if let error = json["error"] as? NSDictionary {
-                    if let message1 = error["message"] as? String {
-                        message = message1
-                    }
-                } else if let messages = json["message"] as? String {
-                    message = messages
-                }
+            if let error = try? JSONDecoder().decode(ErrorBody.self, from: data) {
+                message = error.details[0].field + " " + error.details[0].code
             }
-        } else {
-            print("Error Desc: \(response.error?.localizedDescription ?? "")")
-            print("Error Code: \(response.error?.asAFError?.failureReason ?? "") \(response.response?.statusCode ?? 0)")
         }
         return message
     }
@@ -48,18 +35,18 @@ protocol APIConfiguration: URLRequestConvertible, URLConvertible {
     var parameters: [String: Any] { get }
 }
 
-class DictionaryEncoder {
-    private let jsonEncoder = JSONEncoder()
-    func encode<T> (_ value: T) throws -> Any where T: Encodable {
-        let jsonData = try jsonEncoder.encode(value)
-        return try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
-    }
+struct APIResponse: Any, Codable {
+
 }
 
-class DictionaryDecoder {
-    private let jsonDecoder = JSONDecoder()
-    func decode<T> (_ type: T.Type, from json: Any) throws -> T where T: Decodable {
-        let jsonData = try JSONSerialization.data(withJSONObject: json, options: [])
-        return try jsonDecoder.decode(type, from: jsonData)
-    }
+struct ErrorBody: Codable {
+    let code: Int
+    let message: String
+    let details: [ErrorBodyDetail]
+}
+
+struct ErrorBodyDetail: Codable {
+    let resource: String
+    let field: String
+    let code: String
 }

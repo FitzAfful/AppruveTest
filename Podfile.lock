@@ -1,24 +1,34 @@
 PODS:
   - Alamofire (5.1.0)
+  - FTIndicator (1.2.9):
+    - FTIndicator/FTNotificationIndicator (= 1.2.9)
+    - FTIndicator/FTProgressIndicator (= 1.2.9)
+    - FTIndicator/FTToastIndicator (= 1.2.9)
+  - FTIndicator/FTNotificationIndicator (1.2.9)
+  - FTIndicator/FTProgressIndicator (1.2.9)
+  - FTIndicator/FTToastIndicator (1.2.9)
   - Mocker (2.1.0)
   - SwiftLint (0.39.2)
 
 DEPENDENCIES:
   - Alamofire
+  - FTIndicator
   - Mocker
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - FTIndicator
     - Mocker
     - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  FTIndicator: f7f071fd159e5befa1d040a9ef2e3ab53fa9322c
   Mocker: 55f3d932b93e1568f3cf15bd697348c06fc676ee
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
 
-PODFILE CHECKSUM: 4f5dfacb36eb3f9f33cc2530aa7e18354b2209cb
+PODFILE CHECKSUM: 5cfdb98bb6ca688b4742d36981112634d6288399
 
 COCOAPODS: 1.8.4
