@@ -85,7 +85,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
 
     func chooseOptions() {
-        let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Please choose an option", message: "", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Take Picture", style: UIAlertAction.Style.default, handler: {  (_) in
             self.shootPhoto()
         }))
