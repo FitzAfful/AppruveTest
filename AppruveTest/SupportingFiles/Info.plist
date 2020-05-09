@@ -60,5 +60,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+    <key>NSCameraUsageDescription</key>
+    <string>Choose a Profile Picture</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Choose a Profile Picture</string>
 </dict>
 </plist>
