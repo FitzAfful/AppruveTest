@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,9 @@
 		84549E712466CC73000387B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84549E6F2466CC73000387B9 /* LaunchScreen.storyboard */; };
 		84549E7C2466CC73000387B9 /* AppruveTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84549E7B2466CC73000387B9 /* AppruveTestTests.swift */; };
 		84549E872466CC73000387B9 /* AppruveTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84549E862466CC73000387B9 /* AppruveTestUITests.swift */; };
+		84B28FBF2466CF5C005FC2DC /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B28FBE2466CF5C005FC2DC /* APIRouter.swift */; };
+		84B28FC12466CF69005FC2DC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B28FC02466CF69005FC2DC /* APIManager.swift */; };
+		84B28FC32466D046005FC2DC /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B28FC22466D046005FC2DC /* NetworkConstants.swift */; };
 		B3AA0BB15972FF831A385C75 /* Pods_AppruveTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43315D982CD7010416CD4D92 /* Pods_AppruveTestTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,9 @@
 		84549E822466CC73000387B9 /* AppruveTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppruveTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84549E862466CC73000387B9 /* AppruveTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppruveTestUITests.swift; sourceTree = "<group>"; };
 		84549E882466CC73000387B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84B28FBE2466CF5C005FC2DC /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		84B28FC02466CF69005FC2DC /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		84B28FC22466D046005FC2DC /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		86A05F85E87D69BE49BD0422 /* Pods-AppruveTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppruveTest.debug.xcconfig"; path = "Target Support Files/Pods-AppruveTest/Pods-AppruveTest.debug.xcconfig"; sourceTree = "<group>"; };
 		974A6449F3A3FDF6B1F6F96C /* Pods-AppruveTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppruveTestTests.release.xcconfig"; path = "Target Support Files/Pods-AppruveTestTests/Pods-AppruveTestTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +117,7 @@
 		84549E632466CC70000387B9 /* AppruveTest */ = {
 			isa = PBXGroup;
 			children = (
+				84B28FBD2466CF47005FC2DC /* DataManager */,
 				84549E642466CC70000387B9 /* AppDelegate.swift */,
 				84549E662466CC70000387B9 /* SceneDelegate.swift */,
 				84549E682466CC70000387B9 /* ViewController.swift */,
@@ -140,6 +147,16 @@
 			path = AppruveTestUITests;
 			sourceTree = "<group>";
 		};
+		84B28FBD2466CF47005FC2DC /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				84B28FBE2466CF5C005FC2DC /* APIRouter.swift */,
+				84B28FC02466CF69005FC2DC /* APIManager.swift */,
+				84B28FC22466D046005FC2DC /* NetworkConstants.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
 		C4943E8129457A0EE7EF5E43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +174,6 @@
 				389EB39A95B22FEC475EA87D /* Pods-AppruveTestTests.debug.xcconfig */,
 				974A6449F3A3FDF6B1F6F96C /* Pods-AppruveTestTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -173,6 +189,7 @@
 				84549E5E2466CC70000387B9 /* Frameworks */,
 				84549E5F2466CC70000387B9 /* Resources */,
 				74E03CAD4D93906673C244CB /* [CP] Embed Pods Frameworks */,
+				84B28FBC2466CF39005FC2DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -308,6 +325,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AppruveTest/Pods-AppruveTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		84B28FBC2466CF39005FC2DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		E56B68323B50401F5D60377F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -359,7 +393,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B28FC32466D046005FC2DC /* NetworkConstants.swift in Sources */,
 				84549E692466CC70000387B9 /* ViewController.swift in Sources */,
+				84B28FBF2466CF5C005FC2DC /* APIRouter.swift in Sources */,
+				84B28FC12466CF69005FC2DC /* APIManager.swift in Sources */,
 				84549E652466CC70000387B9 /* AppDelegate.swift in Sources */,
 				84549E672466CC70000387B9 /* SceneDelegate.swift in Sources */,
 			);

@@ -1,0 +1,23 @@
+included:
+  - AppruveTest
+
+disabled_rules:
+  - identifier_name
+  - line_length
+  - force_cast
+  - switch_case_alignment
+  - multiple_closures_with_trailing_closure
+  - force_try
+
+excluded:
+  - Pods
+
+line_length:
+    warning: 180
+    error: 400
+    ignores_function_declarations: true
+    ignores_comments: true
+    ignores_urls: true
+
+switch_case_alignment:
+    indented_cases: true

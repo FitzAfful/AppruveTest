@@ -5,7 +5,6 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'AppruveTest' do
-    pod 'Nuke'
     pod 'Alamofire'
     pod 'SwiftLint'
     pod 'Mocker'
